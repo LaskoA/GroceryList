@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    {{ product.name }}
+  </h1>
+    <br>
+    <a href="{% url 'app:product-update' pk=product.id %}" class="btn btn-primary" style="float:
+    left">
+      Змінити
+    </a>
+    <a href="{% url 'app:product-delete' pk=product.id %}" class="btn btn-danger link-to-page" style="float:
+    right">
+      Видалити
+    </a>
+    <br>
+    <hr>
+
+{% endblock %}

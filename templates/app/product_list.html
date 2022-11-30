@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1>
+  Продукти
+  </h1>
+  <br>
+    <a href="{% url 'app:product-create' %}" class="btn btn-primary link-to-page" style="float: left">
+      Додати
+    </a>
+  <br>
+
+
+    <br>
+  {% if product_list %}
+      {% for product in product_list %}
+          <br>
+        <a href="{% url 'app:product-detail' pk=product.id %}">{{ product.name }}</a>
+
+        <hr>
+      {% endfor %}
+  {% else %}
+      <p>Додайте перший продукт!</p>
+  {% endif %}
+{% endblock %}

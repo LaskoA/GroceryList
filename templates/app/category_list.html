@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1 align="center">
+  Категорії
+  </h1>
+  <br>
+    <a href="{% url 'app:category-create' %}" class="btn btn-primary link-to-page" style="float: left">
+      Додати
+    </a>
+  <br>
+
+
+    <br>
+  {% if category_list %}
+      {% for category in category_list %}
+        <br>
+        <a href="{% url 'app:category-detail' pk=category.id %}">{{ category.title }}</a>
+          <br>
+        <hr>
+      {% endfor %}
+  {% else %}
+      <p>Створіть свою першу категорію!</p>
+  {% endif %}
+{% endblock %}

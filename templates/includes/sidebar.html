@@ -1,0 +1,17 @@
+<ul class="sidebar-nav list-group">
+    {% if user.is_authenticated %}
+    <li class="list-group-item">Користувач: <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a>
+    <br>
+        <a href="{% url 'logout'%}?next={{request.path}}">Вийти</a></li>
+  {% else %}
+    <li class="list-group-item"><a href="{% url 'login'%}?next={{request.path}}">Залогінитись</a></li>
+  {% endif %}
+    <li class="list-group-item"><a href="http://127.0.0.1:8000/">Домашня сторінка</a></li>
+    <li class="list-group-item"><a href="http://127.0.0.1:8000/purchases/?title=1">Списки покупок</a></li>
+    <li class="list-group-item"><a href="http://127.0.0.1:8000/products/">Продукти</a></li>
+    <li class="list-group-item"><a href="http://127.0.0.1:8000/categories/">Категорії покупок</a></li>
+    <li class="list-group-item">
+    {% load static %}
+    <img src="{% static 'sidebar.png' %}" alt="" style="width:100%; height:100%">
+    </li>
+</ul>

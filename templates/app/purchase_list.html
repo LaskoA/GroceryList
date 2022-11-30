@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <br>
+  <div id='content'>
+  <span style="float: right"><a href="{% url 'app:purchase-create' %}" class="btn btn-primary link-to-page">
+      Додати продукт до списку
+  </a></span>
+
+  <form action="" method="get">
+  {{ search_form|crispy }}
+  <input type="submit" value="Обрати категорію" class="btn btn-warning">
+  </form>
+  </div>
+  <br>
+  {% if purchase_list %}
+      {% for purchase in purchase_list %}
+        <a href="{% url 'app:purchase-detail' pk=purchase.id %}">{{ purchase.products }}</a>
+          {% if purchase.status %}
+              <a href="{% url "app:purchase-status-change" pk=purchase.id %}"
+                 class="btn btn-info" style="float: right; background-color:green;">
+              Куплено</a>
+      {% else %}
+              <a href="{% url "app:purchase-status-change" pk=purchase.id %}"
+                 class="btn btn-info" style="float: right; background-color: red">
+              Треба купити</a>
+        {% endif %}
+          <br>
+        {% if purchase.quantity %} <span style="color:black">{{ purchase.quantity}}</span>{% endif %}
+        {% if purchase.scale %} <span style="color:black">{{ purchase.scale}}</span>{% endif %}
+        {% if purchase.comment %} <span style="color:black">{{ purchase.comment}}</span>{% endif %}<br>
+        <span style="color:black"><em>Категорія: {{ purchase.categories}}</em></span><br>
+        <hr>
+      {% endfor %}
+  {% else %}
+      <p>Список порожній</p>
+  {% endif %}
+{% endblock %}

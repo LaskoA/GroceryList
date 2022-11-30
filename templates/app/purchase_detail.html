@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1>
+    {{ purchase.products }}
+  </h1>
+    <br>
+    <a href="{% url 'app:purchase-update' pk=purchase.id %}" class="btn btn-primary" style="float:
+    left">
+      Змінити
+    </a>
+    <br>
+    <br>
+
+  {% if purchase.quantity %} <span>Кількість: {{ purchase.quantity}}</span>{% endif %}<br>
+  {% if purchase.scale %} <span>Шкала: {{ purchase.scale}}</span>{% endif %}<br>
+  {% if purchase.comment %} <span>Коментар: {{ purchase.comment}}</span>{% endif %}<br>
+  <span>Категорія: {{ purchase.categories}}</span><br>
+  <br>
+  <a href="{% url 'app:purchase-delete' pk=purchase.id %}" class="btn btn-danger link-to-page" style="float:
+    left">Видалити</a>
+
+{% endblock %}

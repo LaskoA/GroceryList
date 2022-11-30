@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% load bootstrap4 %}
+
+{% block content %}
+  <h1>{{ object|yesno:"Оновити,Створити" }} Покупку </h1>
+      <span style="float: right; margin-right: 830px;"><a href="{% url 'app:product-create' %}">Додати новий
+          продукт</a></span>
+  <form action="" method="post" lang="en" novalidate>
+    {% csrf_token %}
+    {{ form|crispy }}
+    <br>
+    <input type="submit" value="Підтвердити" class="btn btn-primary">
+  </form>
+{% endblock %}
