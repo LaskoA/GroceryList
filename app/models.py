@@ -30,7 +30,7 @@ class Product(models.Model):
 
 class Purchase(models.Model):
     products = models.OneToOneField(Product, on_delete=models.CASCADE, unique=True)
-    categories = models.ForeignKey(Category, on_delete=models.CASCADE)
+    categories = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
     status = models.BooleanField()
     quantity = models.CharField(max_length=63, blank=True, null=True)
     scale = models.CharField(max_length=63, blank=True, null=True)
