@@ -40,4 +40,3 @@ python manage.py migrate
 ![website_interface](1.png)
 ![website_interface](2.png)
 ![website_interface](3.png)
-"# GroceryList" 
