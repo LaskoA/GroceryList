@@ -2,7 +2,7 @@
 
 Django project for family shopping
 
-[Taxi service project deployed to Heroku](https://taxi-service-lasko.herokuapp.com/)
+[GroceryList deployed to Pythonanywhere](http://laskoa.pythonanywhere.com/)
 
 ## Installation
 

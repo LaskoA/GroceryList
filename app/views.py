@@ -38,14 +38,14 @@ class PurchaseDetailView(LoginRequiredMixin, generic.DetailView):
 class PurchaseCreateView(LoginRequiredMixin, generic.CreateView):
     model = Purchase
     form_class = PurchaseForm
-    success_url = reverse_lazy("app:purchase-list")
+    success_url = "http://127.0.0.1:8000/purchases/?title=1"
     template_name = "app/purchase_form.html"
 
 
 class PurchaseUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Purchase
     form_class = PurchaseForm
-    success_url = reverse_lazy("app:purchase-list")
+    success_url = "http://127.0.0.1:8000/purchases/?title=1"
     template_name = "app/purchase_form.html"
 
 
