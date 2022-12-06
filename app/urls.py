@@ -15,7 +15,7 @@ from .views import (
     PurchaseDeleteView,
     PurchaseDetailView,
     PurchaseUpdateView,
-    purchase_status_change,
+    change_status,
 )
 
 app_name = "app"
@@ -32,7 +32,7 @@ urlpatterns = [
     path("purchases/create", PurchaseCreateView.as_view(), name="purchase-create"),
     path("purchases/<int:pk>/update/", PurchaseUpdateView.as_view(), name="purchase-update"),
     path("purchases/<int:pk>/delete/", PurchaseDeleteView.as_view(), name="purchase-delete"),
-    path("purchases/<int:pk>/status-change", purchase_status_change, name="purchase-status-change"),
+    path("purchases/<int:pk>/change-status", change_status, name="change-status"),
     path("categories/", CategoryListView.as_view(), name="category-list"),
     path("categories/<int:pk>/", CategoryDetailView.as_view(), name="category-detail"),
     path("categories/create", CategoryCreateView.as_view(), name="category-create"),

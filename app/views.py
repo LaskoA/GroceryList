@@ -51,18 +51,20 @@ class PurchaseUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class PurchaseDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Purchase
-    success_url = reverse_lazy("app:purchase-list")
+    success_url = "http://127.0.0.1:8000/purchases/?title=1"
     template_name = "app/purchase_delete.html"
 
 
 @login_required
-def purchase_status_change(request, pk):
+def change_status(request, pk):
     purchase = Purchase.objects.get(id=pk)
-    if purchase.status:
+
+    if request.method == "POST" and purchase.status is True:
         purchase.status = False
+        purchase.save()
     else:
         purchase.status = True
-    purchase.save()
+        purchase.save()
 
     redirect_to = request.META.get('HTTP_REFERER', reverse_lazy('default-redirect-page'))
     return HttpResponseRedirect(redirect_to)
@@ -71,7 +73,7 @@ def purchase_status_change(request, pk):
 class ProductCreateView(LoginRequiredMixin, generic.CreateView):
     model = Product
     form_class = ProductForm
-    success_url = reverse_lazy("app:product-list")
+    success_url = reverse_lazy("app:purchase-create")
     template_name = "app/product_form.html"
 
 
@@ -79,6 +81,7 @@ class ProductListView(LoginRequiredMixin, generic.ListView):
     model = Product
     queryset = Product.objects.all()
     template_name = "app/product_list.html"
+    success_url = "http://127.0.0.1:8000/products/"
 
 
 class ProductDetailView(LoginRequiredMixin, generic.DetailView):

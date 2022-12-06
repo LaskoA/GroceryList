@@ -30,6 +30,7 @@ python manage.py migrate
 ## Features
 
 - access of all family members to online grocery list
+- AJAX method was implemented to change purchase status without page reload and scrolling
 - add or update app when it`s convenient to not forget something important
 - create and modify purchases, products, categories
 - user-friendly interface, purchases are sorted according to statuses and names 
